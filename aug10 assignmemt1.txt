@@ -1,0 +1,30 @@
+#include <stdio.h>
+ 
+int replaceDigit(int x, int d1, int d2)
+{
+    int result = 0, multiply = 1;
+    while (x / 10 > 0)
+    {
+        int remainder = x % 10;
+       
+        if (remainder == d1)
+            result = result + d2 * multiply;
+        else 
+            result = result + remainder * multiply;
+        multiply *= 10;
+        x = x / 10; 
+    }
+    if (x == d1)
+        result = result + d2 * multiply;
+    else 
+        result = result + x * multiply;
+    return result;
+}
+
+int main()
+{
+    int x = 16918, d1 = 1, d2 = 7;
+    printf("%d\n", replaceDigit(x, d1, d2));
+    return 0;
+}
+ 
